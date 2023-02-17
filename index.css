@@ -135,15 +135,3 @@ body {
     display: block;
   }
 
-  #timer{
-    font-family: 'Press Start 2P', cursive;
-    color: #e4d07a;
-    font-size: 3rem;
-  }
-
-  #time-up{
-    display: none;
-    font-family: 'Press Start 2P', cursive;
-    color:darkred;
-    font-size: 3rem;
-  }

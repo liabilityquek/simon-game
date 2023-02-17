@@ -6,9 +6,8 @@ let gameLevel = 0;
 let gameStarted = false;
 let maxLevel;
 let selectDifficultyLevel;
-let timerCountDown;
+let numberOfLives;
 
-//console.log(`timerCountDown: ${timerCountDown}`);
 
 if(!gameStarted){
 	$('.container').css('pointer-events', 'none');
@@ -23,62 +22,21 @@ function maskDifficultyLevel(){
 	
 }
 
-function getTimerCountDown (timerCountDown){ //callback function
-	
-	//console.log(`timerCountDown: ${timerCountDown}`);
-	return timerCountDown;
-}
-
-function countDownTimer(getTimerCountDown){
-	let timer = 10;
-  
-	if (timerCountDown !== null) {
-	  clearInterval(timerCountDown);
-	}
-	
-	timerCountDown = setInterval(function(){
-	  let seconds = timer % 60;
-	  let timeString = `${seconds}`;
-  
-	  if(timer <= 3 && timer > 0){
-		$('#timer').toggleClass('game-over', true);
-	  } else {
-		$('#timer').toggleClass('game-over', false);
-	  }
-  
-	  if(timer <= 0){
-		timerCountDown = null;
-		clearInterval(timerCountDown);
-		$('#time-up').css('display', 'block');  
-		$('#timer').css('display', 'none');  
-		$('body').addClass('game-over');
-		$('#level-title').text(`Game Over!`);
-		restartGame();
-	  }
-	  $('#timer').html(timeString);
-	  timer -= 1;
-	}, 1000);
-  
-	getTimerCountDown(timerCountDown);
-  }
-  
-
 function difficultyLevel(selectDifficultyLevel){
 	switch (selectDifficultyLevel) {
 		case 'Easy':
-		maxLevel = 5;    
+		maxLevel = 20;
+		numberOfLives = 0;   
 		break;
 		
 		case 'Normal':
-		maxLevel = 10;
+		maxLevel = 2;
+		numberOfLives = 3;  
 		break;
 		
 		case 'Difficult':
-		maxLevel = 15;  
-		break;
-		
-		case 'Extreme':
-		maxLevel = 20;   
+		maxLevel = 20;  
+		numberOfLives = 3;  
 		break;
 		
 		default:
@@ -126,18 +84,14 @@ $('.btn').click(function(){
 	checkAns();
 })
 
-
 function generateColorCombination(getGameLevel){
     userClickPattern = [];
-    gameLevel++;
+    //gameLevel++;
     maxLevel = difficultyLevel(selectDifficultyLevel);
     $('#level-title').text(`Level ${gameLevel}/Level ${maxLevel}`);
     $('.container').css('pointer-events', 'auto');
     gamePattern = [];
-	if (timerCountDown !== null) {
-		clearInterval(timerCountDown);
-	  }
-	  
+
     for(let i = 0; i < gameLevel; i++){
 		
 		if (gameLevel > maxLevel) {
@@ -152,28 +106,14 @@ function generateColorCombination(getGameLevel){
         gamePattern.push(color);
         gamePattern.forEach((color, index) => {
 			setTimeout(() => {
-				$('#' + color).fadeOut(50).fadeIn(50).fadeOut(50).fadeIn(50);
+				$('#' + color).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
 				playSound(color);
-			}, index * 350);
+			}, index * 500);
 		});
         console.log("gamePattern: " + gamePattern);
 	}
-	getGameLevel(gameLevel);
-	//console.log('gameLevel: ', getGameLevel(gameLevel)); //callback function 
-	switch (selectDifficultyLevel) {
-		case 'Normal':
-		case 'Difficult':
-		case 'Extreme':
-			
-			//console.log(`inside function timer: ${timerCountDown} `);
-			timerCountDown = 10;
-			countDownTimer(getTimerCountDown); 
-		break;
-
-		default: 
-		break;
-	}
-
+	getGameLevel(gameLevel); //callback function
+	gameWon = false;
 }
 
 function getGameLevel(gameLevel){
@@ -183,12 +123,12 @@ function getGameLevel(gameLevel){
 function checkWin(){
 	gameLevel = getGameLevel(gameLevel);
 	if (gameLevel > maxLevel) {
-		console.log('gameLevel: ', getGameLevel(gameLevel));
+		restartGame();
 		$('#level-title').text(`We have got a Winner!`);
 		$('.container').css('pointer-events', 'none');
 		playOtherSounds('winner');
-		restartGame();
 	}
+
 }
 
 function buttonPressed(btnColor){
@@ -202,6 +142,7 @@ $('body').keypress(function(e){
 	console.log(e.key);
 	if(e.key === 'Enter' && !gameStarted && selectDifficultyLevel){
 		gameStarted = true;
+		gameLevel++;
 		maskDifficultyLevel();
 		setTimeout(() => {
 			generateColorCombination(getGameLevel);
@@ -213,6 +154,7 @@ $('body').keypress(function(e){
 $('#enter').click(function(){
 	if(!gameStarted && selectDifficultyLevel){
 		gameStarted = true;
+		gameLevel++;
 		maskDifficultyLevel();
 		setTimeout(() => {
 			generateColorCombination(getGameLevel);
@@ -226,29 +168,43 @@ function checkAns() {
 	}
 	let lastColor = userClickPattern.length - 1;
 	console.log(`checking gamePattern[lastColor]: ${gamePattern[lastColor]}`);
-	//console.log(`timerCountDown in checkAns: ${timer}`);
-	if (userClickPattern[lastColor] !== gamePattern[lastColor]) { //comparing values in an array
+	if (userClickPattern[lastColor] !== gamePattern[lastColor] && numberOfLives > 0) { //comparing values in an array
 		console.log('wrong');
 		console.log("userClickPattern[lastIndex]", userClickPattern[lastColor]);
 		console.log("gamePattern[lastIndex]", gamePattern[lastColor]);
+		numberOfLives-=1;
+		console.log(`numberOfLives, ${numberOfLives}`);
+		playOtherSounds('wrong');
+		setTimeout(() => {
+            $('body').removeClass('game-over');
+		}, 500);
+
+		setTimeout(() => {
+            generateColorCombination(getGameLevel);
+		}, 1000);
+		
+
+	}else if (userClickPattern[lastColor] !== gamePattern[lastColor] && numberOfLives === 0) { //comparing values in an array
+		console.log('wrong');
+		console.log("userClickPattern[lastIndex]", userClickPattern[lastColor]);
+		console.log("gamePattern[lastIndex]", gamePattern[lastColor]);
+		console.log(`numberOfLives, ${numberOfLives}`);
 		playOtherSounds('wrong');
 		$('body').addClass('game-over');
 		$('#level-title').text(`Game Over!`);
 		setTimeout(() => {
             $('body').removeClass('game-over')
-			if (timerCountDown !== null) {
-				clearInterval(timerCountDown);
-			}
 		}, 500);
 		restartGame();
 		$('.container').css('pointer-events', 'none');
 		return;
-	}
-	
-	if (userClickPattern.length === gamePattern.length) {
+	}else if (userClickPattern.length === gamePattern.length) {
 		console.log('Success');
 		console.log(`gamePattern: ${gamePattern}, userClickPattern: ${userClickPattern}`);
 		console.log(`gamePattern.length: ${gamePattern.length}, userClickPattern.length: ${userClickPattern.length}`);
+		// if (gameLevel < maxLevel) {
+		 	gameLevel++;
+		//   }
 		setTimeout(() => {
             generateColorCombination(getGameLevel);
 		}, 1000);
@@ -275,3 +231,5 @@ function playOtherSounds(filename){
 	let audio = new Audio(`/sounds/${filename}.mp3`);
 	audio.play();
 }
+
+
