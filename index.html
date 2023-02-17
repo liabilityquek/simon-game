@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">  
+    <title>Simon Game</title>
+</head>
+<body>  
+  <div class="header">
+    <div class="dropdown">
+      <button class="gear">
+        <img src="https://pixelartmaker-data-78746291193.nyc3.digitaloceanspaces.com/image/9ee37f666991c7d.png" alt="settings" />
+      </button>
+      <div class="dropdown-content">
+        <a href="#">Easy</a>
+        <a href="#">Normal</a>
+        <a href="#">Difficult</a>
+        <a href="#">Extreme</a>
+      </div>
+    </div>
+  </div>
+  
+
+    <h1 id="level-title">Press <span id="enter"> Enter</span> to Start</h1>
+    <p id="timer"></p>
+    <p id="time-up">Time's Up!</p>
+    <div class="container">
+      <div class="row">
+  
+        <div type="button" id="green" class="btn green">
+  
+        </div>
+  
+        <div type="button" id="red" class="btn red">
+  
+        </div>
+      </div>
+  
+      <div class="row">
+  
+        <div type="button" id="yellow" class="btn yellow">
+  
+        </div>
+        <div type="button" id="blue" class="btn blue">
+  
+        </div>
+  
+      </div>
+  
+    </div>
+     <button class="pixel-btn">RESTART GAME</button>
+
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" ></script>
+    <script src="/revised.js"></script>
+</body>
+</html>
