@@ -28,7 +28,7 @@ function difficultyLevel(selectDifficultyLevel){
 
 		case 'Normal':
 		case 'Difficult':
-			maxLevel = 2;
+			maxLevel = 20;
 			numberOfLives = 3;			
 			break;
 
