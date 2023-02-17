@@ -23,7 +23,7 @@ body {
   }
 
   #enter{
-    cursor: pointer;
+    cursor: pointer !important;
     color: rgb(53, 0, 128);
   }
   .game-over {
