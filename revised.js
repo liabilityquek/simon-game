@@ -23,7 +23,7 @@ function difficultyLevel(selectDifficultyLevel){
 	switch (selectDifficultyLevel) {
 		case 'Easy':
 			maxLevel = 20;
-			numberOfLives = 0;   
+			numberOfLives = 0;  
 			break;
 
 		case 'Normal':
@@ -42,6 +42,19 @@ function difficultyLevel(selectDifficultyLevel){
 let difficulty = difficultyLevel(selectDifficultyLevel);
 maxLevel = difficulty.maxLevel;
 numberOfLives = difficulty.numberOfLives;
+
+function reduceLives(numberOfLives){
+	console.log(`numberOfLives: ${numberOfLives}`);
+	let lives = $('.heart');
+	for(let i = lives.length; i >= 0; i--){
+		console.log(`lives.length: ${lives.length}`);
+		if (numberOfLives > 0) {
+			$(lives[numberOfLives]).css('opacity', '0.3');
+			lives.length--;
+		  }
+}
+
+}
 
 function getDifficuiltyLevel(difficultyLevel) {
 	$('.dropdown-content a').click(function() {
@@ -139,6 +152,13 @@ $('body').keypress(function(e){
 			generateColorCombination(getGameLevel);
 		}, 1000);     
 	}
+	switch (selectDifficultyLevel) {
+		case 'Easy':
+			$('.pixel-block').css('display', 'none');
+			break;
+		default:
+			break;
+	}
 });
 
 $('#enter').click(function(){
@@ -150,6 +170,13 @@ $('#enter').click(function(){
 			generateColorCombination(getGameLevel);
 		}, 1000);             
 	}
+	switch (selectDifficultyLevel) {
+		case 'Easy':
+			$('.pixel-block').css('display', 'none');
+			break;
+		default:
+			break;
+	}
 })
 
 function checkAns() {
@@ -157,8 +184,7 @@ function checkAns() {
 		return;
 	}
 	let lastColor = userClickPattern.length - 1;
-	if (userClickPattern[lastColor] !== gamePattern[lastColor] && numberOfLives > 0) { //comparing values in an array
-		console.log('wrong');
+	if (userClickPattern[lastColor] !== gamePattern[lastColor] && numberOfLives > 0) {
 		console.log("userClickPattern[lastIndex]", userClickPattern[lastColor]);
 		console.log("gamePattern[lastIndex]", gamePattern[lastColor]);
 		console.log(selectDifficultyLevel);
@@ -170,24 +196,22 @@ function checkAns() {
 		setTimeout(() => {
             generateColorCombination(getGameLevel);
 		}, 1000);
-		console.log(`numberOfLives before: ${numberOfLives}`);
-		numberOfLives--;
-		console.log(`numberOfLives after: ${numberOfLives}`);
+		reduceLives(numberOfLives);
+		numberOfLives--;		
 		
-
 	}else if (userClickPattern[lastColor] !== gamePattern[lastColor] && numberOfLives === 0) { //comparing values in an array
 		console.log('wrong');
 		console.log("userClickPattern[lastIndex]", userClickPattern[lastColor]);
 		console.log("gamePattern[lastIndex]", gamePattern[lastColor]);
-		console.log(`numberOfLives, ${numberOfLives}`);
 		playOtherSounds('wrong');
 		$('body').addClass('game-over');
 		$('#level-title').text(`Game Over!`);
 		setTimeout(() => {
             $('body').removeClass('game-over')
 		}, 500);
-		restartGame();
+		$('.heart').css('opacity', '0.3');
 		$('.container').css('pointer-events', 'none');
+		restartGame();
 		return;
 	}else if (userClickPattern.length === gamePattern.length) {
 		console.log('Success');
