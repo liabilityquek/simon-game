@@ -135,8 +135,7 @@ These are key takeaways when working on the project:
 <li>Writing mulitple console.log syntax to ensure that the function or codes are returning the correct values</li>
 <li>Assign meaningful name to functions for easy readability</li>
 <li>Create functions in order to reduce duplication codes</li>
-<li>Returning multiple values from an function using an object</li>
-<br>
+<li>Returning multiple values from an function using an object like the one shown below</li>
 
 ```
 function difficultyLevel(selectDifficultyLevel){
@@ -171,10 +170,83 @@ maxLevel = difficulty.maxLevel;
 numberOfLives = difficulty.numberOfLives;
 
 ```
+<li>Learning callbacks in class using it in practise to extract the value/s from a variable</li>
+
+```
+function difficultyLevel(selectDifficultyLevel){
+	switch (selectDifficultyLevel) {
+		case 'Easy':
+			maxLevel = 20;
+			numberOfLives = 0;  
+			break;
+		case 'Normal':
+			maxLevel = 25;
+			numberOfLives = 2;			
+			break;
+
+		case 'Difficult':
+			maxLevel = 30;
+			numberOfLives = 2;
+			buttonColors.push('orange', 'purple');	
+			$('#difficult-level').css('display', 'flex');		
+			break;
+		default:
+			$('#enter').css('cursor', 'none');  
+			break;
+	}
+	return{maxLevel, numberOfLives} ;
+}
+
+function getDifficuiltyLevel(difficultyLevel) {
+	$('.dropdown-content a').click(function() {
+		const clickDropDownContent = $(this);
+		if (selectDifficultyLevel !== '' && clickDropDownContent.text() !== selectDifficultyLevel) {
+			$('.dropdown-content a').removeClass('pressed');
+		}
+		clickDropDownContent.addClass('pressed');
+		selectDifficultyLevel = clickDropDownContent.text();
+		difficultyLevel(selectDifficultyLevel); 
+	});
+}
+getDifficuiltyLevel(difficultyLevel);
+```
+<br>
+
+```
+function generateColorCombination(getGameLevel){
+    userClickPattern = [];
+    $('#level-title').text(`Level ${gameLevel}/Level ${maxLevel}`);
+    $('.container').css('pointer-events', 'auto');
+    gamePattern = [];
+	
+    for(let i = 0; i < gameLevel; i++){
+		
+		if (gameLevel > maxLevel) {
+			checkWin();
+			break;
+		}
+        const colorIndex = Math.floor(Math.random() * buttonColors.length);
+        const color = buttonColors[colorIndex];
+        gamePattern.push(color);
+        gamePattern.forEach((color, index) => {
+			setTimeout(() => {
+				$('#' + color).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+				playSound(color);
+			}, index * 500);
+		});
+        console.log("gamePattern: " + gamePattern);
+	}
+	getGameLevel(gameLevel);
+}
+
+function getGameLevel(gameLevel){
+	return gameLevel;
+}
+```
 <br>
 
 ## References
-
+Various sources which I have seek guidance from:
 </li>
 <li><a href=https://stackoverflow.com/questions/9419263/how-to-play-audio>Adding audio using javascript</a>
 </li>
