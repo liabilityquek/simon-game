@@ -17,7 +17,7 @@ The Simon Game has a series of colored butttons that light up and play a sound w
 
 ## Deployment
 
-The game is deployed on GitHub pages, and you can play the game here:
+The game is deployed on GitHub pages, and you can play the game <a href="https://liabilityquek.github.io/simon-game/">here</a>. 
 
 ## Features
 <li>3 differnt Game modes; Easy, Normal and Difficult</li>
