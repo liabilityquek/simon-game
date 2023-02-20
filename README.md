@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=500px height=600px src="/images/Simon Game.png" alt="Simon Game"></a>
+ <img width=500px height=600px src="/images/Simon-Game.png" alt="Simon Game"></a>
 </p>
 
 <h3 align="center">Simon Game</h3>
@@ -99,35 +99,35 @@ After learning how to play the Simon Game; this is how I build the game structur
 ## Milestone Timeline
 <strong><u>Day 1:</u></strong>
 <br>
-<input type="checkbox" checked>Learning how to play Simon game.
+<input type="checkbox" id disabled class checked>Learning how to play Simon game.
 <br>
-<input type="checkbox" checked>Learning how the game mechanism works.
+<input type="checkbox" id disabled class checked>Learning how the game mechanism works.
 <br>
-<input type="checkbox" checked>Brainstroming the syntax required for the game.
+<input type="checkbox" id disabled class checked>Brainstroming the syntax required for the game.
 <br>
-<input type="checkbox" checked>Writing up the backbone of the game.
+<input type="checkbox" id disabled class checked>Writing up the backbone of the game.
 <br>
-<input type="checkbox" checked>Getting the animations, sounds to work.
+<input type="checkbox" id disabled class checked>Getting the animations, sounds to work.
 <br><br>
 <strong><u>Day 2:</u></strong>
 <br>
-<input type="checkbox" checked>Introduce both game and difficulty level.
+<input type="checkbox" id disabled class checked>Introduce both game and difficulty level.
 <br>
-<input type="checkbox" checked>DOM manipulation and inserting click event listener
+<input type="checkbox" id disabled class checked>DOM manipulation and inserting click event listener
 <br>
-<input type="checkbox" checked>Working out on setTimeout
+<input type="checkbox" id disabled class checked>Working out on setTimeout
 <br><br>
 <strong><u>Day 3:</u></strong>
 <br>
-<input type="checkbox" checked>Working out on CSS structure
+<input type="checkbox" id disabled class checked>Working out on CSS structure
 <br>
-<input type="checkbox" checked>Working out on HTML structure
+<input type="checkbox" id disabled class checked>Working out on HTML structure
 <br>
-<input type="checkbox" checked>Testing out on setInterval
+<input type="checkbox" id disabled class checked>Testing out on setInterval
 <br><br>
 <strong><u>Day 4:</u></strong>
 <br>
-<input type="checkbox" checked>Testing out on setInterval
+<input type="checkbox" id disabled class checked>Testing out on setInterval
 <br>
 
 
