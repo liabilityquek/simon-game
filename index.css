@@ -46,7 +46,21 @@ body {
   .yellow {
     background-color: yellow;
   }
+
+  .orange {
+    background-color: orange;
+   
+  }
+
+  .purple {
+    background-color: purple;
+    
+  }
   
+  .row-for-difficult-level{
+    display: none;
+  }
+
   .pressed {
     box-shadow: 0 0 20px white;
     background-color: grey;
@@ -68,35 +82,38 @@ body {
     border-radius: 20%;
     cursor: pointer;
   }
+
   .pixel-btn {
     background-color: #000;
     font-family:'Press Start 2P', cursive;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
+    color: #eee8ce;
+    border: 3px solid;
+    padding: 0.25em 0.75em;
+    font-size: 12px;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
-    outline: none;
     cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
     display: none;
+    border-radius: 8px;
+    -moz-box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    -webkit-box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+
   }
   
   .pixel-btn:hover {
     background-color: #f00;
   }
-  
-  /* .header {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    height: 50px;
-    padding: 10px;
-    margin-left: auto;
+
+  .pixel-btn:active {
+    -moz-box-shadow: 0px 0px 0px 0px;
+    -webkit-box-shadow: 0px 0px 0px 0px;
+    box-shadow: 0px 0px 0px 0px;
+    top: 5px;
+    left: 5px;
   }
-   */
+
    .gear {
     cursor: pointer;
     background-color: inherit;
@@ -139,15 +156,6 @@ body {
     display: block;
   }
 
-  /* .heart-row  {
-    position: relative;
-    top: 50%;
-    left:50%;
-    transform: translate(-50%, -50%);
-    width: 6em;
-    height: 5em;
-  }
-   */
   .pixel-block {
     display: flex;
     flex-wrap: wrap;
@@ -196,3 +204,4 @@ body {
     3em 5em #F22613;
   }
   
+

@@ -1,4 +1,4 @@
-const buttonColors = ['red', 'blue', 'green', 'yellow'];
+let buttonColors = ['red', 'blue', 'green', 'yellow'];
 let gamePattern = [];
 let userClickPattern = [];
 let userChosenColor;
@@ -27,9 +27,15 @@ function difficultyLevel(selectDifficultyLevel){
 			break;
 
 		case 'Normal':
+			maxLevel = 25;
+			numberOfLives = 2;			
+			break;
+
 		case 'Difficult':
-			maxLevel = 20;
-			numberOfLives = 3;			
+			maxLevel = 3;
+			numberOfLives = 2;
+			buttonColors.push('orange', 'purple');	
+			$('.row-for-difficult-level').css('display', 'block');		
 			break;
 
 		default:
@@ -46,14 +52,7 @@ numberOfLives = difficulty.numberOfLives;
 function reduceLives(numberOfLives){
 	console.log(`numberOfLives: ${numberOfLives}`);
 	let lives = $('.heart');
-	for(let i = lives.length; i >= 0; i--){
-		console.log(`lives.length: ${lives.length}`);
-		if (numberOfLives > 0) {
-			$(lives[numberOfLives]).css('opacity', '0.3');
-			lives.length--;
-		  }
-}
-
+	$(lives[numberOfLives]).css('opacity', '0.3');
 }
 
 function getDifficuiltyLevel(difficultyLevel) {
@@ -83,6 +82,8 @@ $('.btn').click(function(){
 		case 'blue':   
 		case 'green':
 		case 'yellow':
+		case 'orange':
+		case 'purple':
 		playSound(buttonText);
 		buttonPressed(buttonText);
 		break;
@@ -90,13 +91,11 @@ $('.btn').click(function(){
         default:
 		break;
 	}
-	checkAns();
+	reconcileGameAndUserPattern();
 })
 
 function generateColorCombination(getGameLevel){
     userClickPattern = [];
-    //gameLevel++;
-   // maxLevel = difficultyLevel(selectDifficultyLevel);
     $('#level-title').text(`Level ${gameLevel}/Level ${maxLevel}`);
     $('.container').css('pointer-events', 'auto');
     gamePattern = [];
@@ -179,7 +178,7 @@ $('#enter').click(function(){
 	}
 })
 
-function checkAns() {
+function reconcileGameAndUserPattern() { 
 	if (!gameStarted) {
 		return;
 	}
@@ -195,7 +194,7 @@ function checkAns() {
 
 		setTimeout(() => {
             generateColorCombination(getGameLevel);
-		}, 1000);
+		}, 1500);
 		reduceLives(numberOfLives);
 		numberOfLives--;		
 		
@@ -228,6 +227,7 @@ function restartGame(){
     gamePattern = [];
     $('.pixel-btn').css('display', 'inline-block');
     $('.pixel-btn').click(function(){
+		$('.pixel-btn').toggleClass('active');
 		location.reload();
 	})
 }
