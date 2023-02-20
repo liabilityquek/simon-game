@@ -8,6 +8,7 @@ let maxLevel;
 let selectDifficultyLevel;
 let numberOfLives;
 
+
 if(!gameStarted){
 	$('.container').css('pointer-events', 'none');
 }
@@ -35,8 +36,9 @@ function difficultyLevel(selectDifficultyLevel){
 			maxLevel = 3;
 			numberOfLives = 2;
 			buttonColors.push('orange', 'purple');	
-			$('.row-for-difficult-level').css('display', 'block');		
+			$('#difficult-level').css('display', 'flex');		
 			break;
+			
 
 		default:
 			$('#enter').css('cursor', 'none');  

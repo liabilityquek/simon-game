@@ -49,18 +49,12 @@ body {
 
   .orange {
     background-color: orange;
-   
   }
 
   .purple {
     background-color: purple;
-    
   }
   
-  .row-for-difficult-level{
-    display: none;
-  }
-
   .pressed {
     box-shadow: 0 0 20px white;
     background-color: grey;
@@ -70,6 +64,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  #difficult-level{
+    display: none;
   }
 
   .btn {
@@ -89,7 +87,7 @@ body {
     color: #eee8ce;
     border: 3px solid;
     padding: 0.25em 0.75em;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
