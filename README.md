@@ -33,6 +33,7 @@ The game is deployed on GitHub pages, and you can play the game <a href="https:/
 <li>HTML</li>
 <li>jQuery</li>
 <li>CSS</li>
+<li>Git commands</li>
 <br>
 
 ## How To Play
@@ -96,41 +97,92 @@ After learning how to play the Simon Game; this is how I build the game structur
 <li>If the player clicked on the wrong button and has no remaining lives, display a game over message and offer the option to play again.</li>
 <br>
 
-## Milestone Timeline
+## Deliverables Timeline
 <strong><u>Day 1:</u></strong>
-<br>
-<li>Learning how to play Simon game.</li>
-<li>Learning how the game mechanism works.</li>
-<li>Brainstroming the syntax required for the game.</li>
-<li>Writing up the backbone of the game.</li>
-<li>Getting the animations, sounds to work.</li>
+<li>Learning how to play Simon game</li>
+<li>Learning how the game mechanism works</li>
+<li>Brainstroming the syntax required for the game</li>
+<li>Writing up the backbone of the game</li>
+<li>Getting both the animations and sounds to work</li>
 <br>
 <strong><u>Day 2:</u></strong>
-<br>
-<li>Introduce both game and difficulty level.</li>
+<li>Writing up the backbone of the game</li>
+<li>Introduce both game and difficulty level</li>
 <li>DOM manipulation and inserting click event listener</li>
-<li>Working out on setTimeout</li>
+<li>Implementing setTimeout</li>
 <br>
 <strong><u>Day 3:</u></strong>
 <br>
-<li>Working out on CSS structure</li>
-<li>Working out on HTML structure</li>
-<li>Testing out on setInterval</li>
+<li>DOM manipulation and inserting click event listener</li>
+<li>CSS structure</li>
+<li>HTML structure</li>
 <br>
 <strong><u>Day 4:</u></strong>
 <br>
-<li>Testing out on setInterval</li>
+<li>DOM manipulation and inserting click event listener</li>
+<li>CSS structure</li>
+<li>HTML structure</li>
+<br>
+<strong><u>Day 5:</u></strong>
+<br>
+<li>Wrap up</li>
 <br>
 
+## Key Takeaways
+These are key takeaways when working on the project:
+<li>Drafting up project requirements</li>
+<li>Making it a habit to comment the codes for easy reference and readability</li>
+<li>Writing mulitple console.log syntax to ensure that the function or codes are returning the correct values</li>
+<li>Assign meaningful name to functions for easy readability</li>
+<li>Create functions in order to reduce duplication codes</li>
+<li>Returning multiple values from an function using an object</li>
+<br>
+```
+function difficultyLevel(selectDifficultyLevel){
+	switch (selectDifficultyLevel) {
+		case 'Easy':
+			maxLevel = 20;
+			numberOfLives = 0;  
+			break;
+		case 'Normal':
+			maxLevel = 25;
+			numberOfLives = 2;			
+			break;
 
+		case 'Difficult':
+			maxLevel = 3;
+			numberOfLives = 2;
+			buttonColors.push('orange', 'purple');	
+			$('#difficult-level').css('display', 'flex');		
+			break;
+		default:
+			$('#enter').css('cursor', 'none');  
+			break;
+	}
+	return{maxLevel, numberOfLives} ;
+}
 
+let difficulty = difficultyLevel(selectDifficultyLevel);
+maxLevel = difficulty.maxLevel;
+numberOfLives = difficulty.numberOfLives;
 
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
+<br>
 
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
+## References
 
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+</li>
+<li><a href=https://stackoverflow.com/questions/9419263/how-to-play-audio>Adding audio using javascript</a>
+</li>
+<li><a href=https://codepen.io/BenLBlood/pen/LGLEoJ>Simon Game</a>
+</li>
+<li><a href=https://www.javascripttutorial.net/javascript-return-multiple-values>Returning Multiple Values from a Function</a>
+</li>
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- References
+<br>
+
+## Game Asset Attribution
+The game assets in this project does not belong to me. All rights belong to the original artists and owners. Below are the links to the game assets used in this project:
+<li><a href=https://codepen.io/araltasher/pen/XBXKjb>Pixel Heart</a>
+<li><a href=https://github.com/londonappbrewery/Simon-Game>App Brewery</a>
+<li><a href=https://pixabay.com/sound-effects/tadaa-47995>Audio</a>
+

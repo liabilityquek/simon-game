@@ -26,7 +26,6 @@ function difficultyLevel(selectDifficultyLevel){
 			maxLevel = 20;
 			numberOfLives = 0;  
 			break;
-
 		case 'Normal':
 			maxLevel = 25;
 			numberOfLives = 2;			
@@ -38,8 +37,6 @@ function difficultyLevel(selectDifficultyLevel){
 			buttonColors.push('orange', 'purple');	
 			$('#difficult-level').css('display', 'flex');		
 			break;
-			
-
 		default:
 			$('#enter').css('cursor', 'none');  
 			break;
