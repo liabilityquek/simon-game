@@ -233,12 +233,12 @@ function restartGame(){
 }
 
 function playSound(buttonText){
-    let audio = new Audio('/sounds/' + buttonText + '.mp3');
+    let audio = new Audio('sounds/' + buttonText + '.mp3');
     audio.play();
 }
 
 function playOtherSounds(filename){
-	let audio = new Audio(`/sounds/${filename}.mp3`);
+	let audio = new Audio(`sounds/${filename}.mp3`);
 	audio.play();
 }
 
