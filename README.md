@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=500px height=600px src="/images/Simon-Game.png" alt="Simon Game"></a>
+ <img width=800px height=600px src="/images/Simon-Game.png" alt="Simon Game"></a>
 </p>
 
 <h3 align="center">Simon Game</h3>
@@ -99,35 +99,27 @@ After learning how to play the Simon Game; this is how I build the game structur
 ## Milestone Timeline
 <strong><u>Day 1:</u></strong>
 <br>
-[x]Learning how to play Simon game.
+<li>Learning how to play Simon game.</li>
+<li>Learning how the game mechanism works.</li>
+<li>Brainstroming the syntax required for the game.</li>
+<li>Writing up the backbone of the game.</li>
+<li>Getting the animations, sounds to work.</li>
 <br>
-<input type="checkbox" id disabled class checked>Learning how the game mechanism works.
-<br>
-<input type="checkbox" id disabled class checked>Brainstroming the syntax required for the game.
-<br>
-<input type="checkbox" id disabled class checked>Writing up the backbone of the game.
-<br>
-<input type="checkbox" id disabled class checked>Getting the animations, sounds to work.
-<br><br>
 <strong><u>Day 2:</u></strong>
 <br>
-<input type="checkbox" id disabled class checked>Introduce both game and difficulty level.
+<li>Introduce both game and difficulty level.</li>
+<li>DOM manipulation and inserting click event listener</li>
+<li>Working out on setTimeout</li>
 <br>
-<input type="checkbox" id disabled class checked>DOM manipulation and inserting click event listener
-<br>
-<input type="checkbox" id disabled class checked>Working out on setTimeout
-<br><br>
 <strong><u>Day 3:</u></strong>
 <br>
-<input type="checkbox" id disabled class checked>Working out on CSS structure
+<li>Working out on CSS structure</li>
+<li>Working out on HTML structure</li>
+<li>Testing out on setInterval</li>
 <br>
-<input type="checkbox" id disabled class checked>Working out on HTML structure
-<br>
-<input type="checkbox" id disabled class checked>Testing out on setInterval
-<br><br>
 <strong><u>Day 4:</u></strong>
 <br>
-<input type="checkbox" id disabled class checked>Testing out on setInterval
+<li>Testing out on setInterval</li>
 <br>
 
 
