@@ -99,7 +99,7 @@ After learning how to play the Simon Game; this is how I build the game structur
 ## Milestone Timeline
 <strong><u>Day 1:</u></strong>
 <br>
-- [x]Learning how to play Simon game.
+[x]Learning how to play Simon game.
 <br>
 <input type="checkbox" id disabled class checked>Learning how the game mechanism works.
 <br>
