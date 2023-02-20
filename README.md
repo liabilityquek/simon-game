@@ -137,13 +137,17 @@ These are key takeaways when working on the project:
 <li>Create functions in order to reduce duplication codes</li>
 <li>Returning multiple values from an function using an object</li>
 <br>
+
 ```
 function difficultyLevel(selectDifficultyLevel){
+
 	switch (selectDifficultyLevel) {
+
 		case 'Easy':
 			maxLevel = 20;
 			numberOfLives = 0;  
 			break;
+
 		case 'Normal':
 			maxLevel = 25;
 			numberOfLives = 2;			
@@ -166,6 +170,7 @@ let difficulty = difficultyLevel(selectDifficultyLevel);
 maxLevel = difficulty.maxLevel;
 numberOfLives = difficulty.numberOfLives;
 
+```
 <br>
 
 ## References
