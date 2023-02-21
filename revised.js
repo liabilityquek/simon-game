@@ -105,9 +105,9 @@ function reconcileGameAndUserPattern() {
 	}
 	let lastColor = userClickPattern.length - 1;
 	if (userClickPattern[lastColor] !== gamePattern[lastColor] && numberOfLives > 0) {
-		console.log("userClickPattern[lastIndex]", userClickPattern[lastColor]);
-		console.log("gamePattern[lastIndex]", gamePattern[lastColor]);
-		console.log(selectDifficultyLevel);
+		// console.log("userClickPattern[lastIndex]", userClickPattern[lastColor]);
+		// console.log("gamePattern[lastIndex]", gamePattern[lastColor]);
+		// console.log(selectDifficultyLevel);
 		playOtherSounds('wrong');
 		setTimeout(() => {
             $('body').removeClass('game-over');
@@ -120,27 +120,43 @@ function reconcileGameAndUserPattern() {
 		numberOfLives--;		
 		
 	}else if (userClickPattern[lastColor] !== gamePattern[lastColor] && numberOfLives === 0) { //comparing values in an array
-		console.log('wrong');
-		console.log("userClickPattern[lastIndex]", userClickPattern[lastColor]);
-		console.log("gamePattern[lastIndex]", gamePattern[lastColor]);
+		// console.log('wrong');
+		// console.log("userClickPattern[lastIndex]", userClickPattern[lastColor]);
+		// console.log("gamePattern[lastIndex]", gamePattern[lastColor]);
 		playOtherSounds('wrong');
-		$('body').addClass('game-over');
-		$('#level-title').text(`Game Over!`);
-		setTimeout(() => {
-            $('body').removeClass('game-over')
-		}, 500);
-		$('.heart').css('opacity', '0.3');
-		$('.container').css('pointer-events', 'none');
-		restartGame();
-		return;
+		gameOver();
+		//return;
 	}else if (userClickPattern.length === gamePattern.length) {
-		console.log('Success');
+		// console.log('Success');
 		 	gameLevel++;
 		setTimeout(() => {
             generateColorCombination(getGameLevel);
 		}, 1000);
 	}
 }
+
+function gameOver(){
+	$('body').addClass('game-over');
+	$('#level-title').text(`Game Over!`);
+	setTimeout(() => {
+		$('body').removeClass('game-over')
+	}, 500);
+	$('.heart').css('opacity', '0.3');
+	$('.container').css('pointer-events', 'none');
+	restartGame();
+}
+
+function restartGame(){
+    gameLevel = 0;
+    gameStarted = false;
+    gamePattern = [];
+    $('.pixel-btn').css('display', 'inline-block');
+    $('.pixel-btn').click(function(){
+		$('.pixel-btn').toggleClass('active');
+		location.reload();
+	})
+}
+
 $('.btn').click(function(){
 	
     buttonText = this.id;
@@ -203,17 +219,6 @@ $('#enter').click(function(){
 			break;
 	}
 })
-
-function restartGame(){
-    gameLevel = 0;
-    gameStarted = false;
-    gamePattern = [];
-    $('.pixel-btn').css('display', 'inline-block');
-    $('.pixel-btn').click(function(){
-		$('.pixel-btn').toggleClass('active');
-		location.reload();
-	})
-}
 
 function buttonPressed(btnColor){
     $('#' + btnColor).addClass('pressed');

@@ -214,9 +214,7 @@ getDifficuiltyLevel(difficultyLevel);
 ```
 <br>
 
-getGameLevel function is used to extract the gameLevel from the
-<br>
-generateColorCombination which will then be used to return the value of the gameLevel.
+getGameLevel function is used to extract the gameLevel from the generateColorCombination which will then be used to return the value of the gameLevel.
 
 ```
 
