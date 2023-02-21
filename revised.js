@@ -8,16 +8,8 @@ let maxLevel;
 let selectDifficultyLevel;
 let numberOfLives;
 
-
 if(!gameStarted){
 	$('.container').css('pointer-events', 'none');
-}
-
-function maskDifficultyLevel(){
-	$('.dropdown-content a').not(`:contains(${selectDifficultyLevel})`).css({
-		'pointer-events': 'none',
-		'opacity': '0.5'
-	});
 }
 
 function difficultyLevel(selectDifficultyLevel){
@@ -32,7 +24,7 @@ function difficultyLevel(selectDifficultyLevel){
 			break;
 
 		case 'Difficult':
-			maxLevel = 3;
+			maxLevel = 30;
 			numberOfLives = 2;
 			buttonColors.push('orange', 'purple');	
 			$('#difficult-level').css('display', 'flex');		
@@ -66,32 +58,6 @@ function getDifficuiltyLevel(difficultyLevel) {
 	});
 }
 getDifficuiltyLevel(difficultyLevel);
-
-$('.btn').click(function(){
-	
-    buttonText = this.id;
-    userChosenColor = buttonText;
-    userClickPattern.push(userChosenColor);
-    console.log(`userClick: ${userClickPattern}`);
-	
-    $('.' + buttonText).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
-	
-	switch (buttonText) {
-		case 'red':
-		case 'blue':   
-		case 'green':
-		case 'yellow':
-		case 'orange':
-		case 'purple':
-		playSound(buttonText);
-		buttonPressed(buttonText);
-		break;
-		
-        default:
-		break;
-	}
-	reconcileGameAndUserPattern();
-})
 
 function generateColorCombination(getGameLevel){
     userClickPattern = [];
@@ -132,50 +98,6 @@ function checkWin(){
 		playOtherSounds('winner');
 	}
 }
-
-function buttonPressed(btnColor){
-    $('#' + btnColor).addClass('pressed');
-    setTimeout(function(){
-        $('#' + btnColor).removeClass('pressed');
-	}, 200);
-}
-
-$('body').keypress(function(e){
-	console.log(e.key);
-	if(e.key === 'Enter' && !gameStarted && selectDifficultyLevel){
-		gameStarted = true;
-		gameLevel++;
-		maskDifficultyLevel();
-		setTimeout(() => {
-			generateColorCombination(getGameLevel);
-		}, 1000);     
-	}
-	switch (selectDifficultyLevel) {
-		case 'Easy':
-			$('.pixel-block').css('display', 'none');
-			break;
-		default:
-			break;
-	}
-});
-
-$('#enter').click(function(){
-	if(!gameStarted && selectDifficultyLevel){
-		gameStarted = true;
-		gameLevel++;
-		maskDifficultyLevel();
-		setTimeout(() => {
-			generateColorCombination(getGameLevel);
-		}, 1000);             
-	}
-	switch (selectDifficultyLevel) {
-		case 'Easy':
-			$('.pixel-block').css('display', 'none');
-			break;
-		default:
-			break;
-	}
-})
 
 function reconcileGameAndUserPattern() { 
 	if (!gameStarted) {
@@ -219,6 +141,68 @@ function reconcileGameAndUserPattern() {
 		}, 1000);
 	}
 }
+$('.btn').click(function(){
+	
+    buttonText = this.id;
+    userChosenColor = buttonText;
+    userClickPattern.push(userChosenColor);
+    console.log(`userClick: ${userClickPattern}`);
+	
+    $('.' + buttonText).fadeOut(100).fadeIn(100).fadeOut(100).fadeIn(100);
+	
+	switch (buttonText) {
+		case 'red':
+		case 'blue':   
+		case 'green':
+		case 'yellow':
+		case 'orange':
+		case 'purple':
+		playSound(buttonText);
+		buttonPressed(buttonText);
+		break;
+		
+        default:
+		break;
+	}
+	reconcileGameAndUserPattern();
+})
+
+$('body').keypress(function(e){
+	console.log(e.key);
+	if(e.key === 'Enter' && !gameStarted && selectDifficultyLevel){
+		gameStarted = true;
+		gameLevel++;
+		maskDifficultyLevel();
+		setTimeout(() => {
+			generateColorCombination(getGameLevel);
+		}, 1000);     
+	}
+	switch (selectDifficultyLevel) {
+		case 'Easy':
+			$('.pixel-block').css('display', 'none');
+			break;
+		default:
+			break;
+	}
+});
+
+$('#enter').click(function(){
+	if(!gameStarted && selectDifficultyLevel){
+		gameStarted = true;
+		gameLevel++;
+		maskDifficultyLevel();
+		setTimeout(() => {
+			generateColorCombination(getGameLevel);
+		}, 1000);             
+	}
+	switch (selectDifficultyLevel) {
+		case 'Easy':
+			$('.pixel-block').css('display', 'none');
+			break;
+		default:
+			break;
+	}
+})
 
 function restartGame(){
     gameLevel = 0;
@@ -231,6 +215,13 @@ function restartGame(){
 	})
 }
 
+function buttonPressed(btnColor){
+    $('#' + btnColor).addClass('pressed');
+    setTimeout(function(){
+        $('#' + btnColor).removeClass('pressed');
+	}, 200);
+}
+
 function playSound(buttonText){
     let audio = new Audio('sounds/' + buttonText + '.mp3');
     audio.play();
@@ -241,4 +232,10 @@ function playOtherSounds(filename){
 	audio.play();
 }
 
+function maskDifficultyLevel(){
+	$('.dropdown-content a').not(`:contains(${selectDifficultyLevel})`).css({
+		'pointer-events': 'none',
+		'opacity': '0.5'
+	});
+}
 
