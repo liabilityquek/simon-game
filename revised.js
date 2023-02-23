@@ -26,8 +26,6 @@ function difficultyLevel(selectDifficultyLevel){
 		case 'Difficult':
 			maxLevel = 30;
 			numberOfLives = 2;
-			buttonColors.push('orange', 'purple');	
-			$('#difficult-level').css('display', 'flex');		
 			break;
 		default:
 			$('#enter').css('cursor', 'none');  
@@ -146,6 +144,21 @@ function gameOver(){
 	restartGame();
 }
 
+function restartGameToEasyModeApperance(){
+	$('#level-title').html('<h1 id="level-title">Press <span id="enter"> Enter</span> to Start</h1>');
+	$('.pixel-heart').css('display', 'flex');
+	$('.heart').css('opacity', '1');
+	
+	$('.pixel-btn').css('display', 'none');
+	$('#difficult-level').css('display', 'none');
+	$('.dropdown-content a').not(`:contains(${selectDifficultyLevel})`).css({
+		'pointer-events': 'auto',
+		'cursor': 'pointer',
+		'opacity': '1'
+	});
+	$('.dropdown-content a').removeClass('pressed');
+}
+
 function restartGame(){
     gameLevel = 0;
     gameStarted = false;
@@ -153,8 +166,12 @@ function restartGame(){
     $('.pixel-btn').css('display', 'inline-block');
     $('.pixel-btn').click(function(){
 		$('.pixel-btn').toggleClass('active');
-		location.reload();
-	})
+		$('.container').css('pointer-events', 'none');
+		restartGameToEasyModeApperance();		
+		setUpEventListenersForStartGame();
+		//location.reload();
+	});
+	$('.container').css('pointer-events', 'auto');
 }
 
 $('.btn').click(function(){
@@ -183,6 +200,8 @@ $('.btn').click(function(){
 	reconcileGameAndUserPattern();
 })
 
+function setUpEventListenersForStartGame(){
+
 $('body').keypress(function(e){
 	console.log(e.key);
 	if(e.key === 'Enter' && !gameStarted && selectDifficultyLevel){
@@ -195,8 +214,12 @@ $('body').keypress(function(e){
 	}
 	switch (selectDifficultyLevel) {
 		case 'Easy':
-			$('.pixel-block').css('display', 'none');
+			$('.pixel-heart').css('display', 'none');
 			break;
+		case 'Difficult':
+			buttonColors.push('orange', 'purple');	
+			$('#difficult-level').css('display', 'flex');		
+			break;	
 		default:
 			break;
 	}
@@ -213,12 +236,18 @@ $('#enter').click(function(){
 	}
 	switch (selectDifficultyLevel) {
 		case 'Easy':
-			$('.pixel-block').css('display', 'none');
+			$('.pixel-heart').css('display', 'none');
 			break;
+		case 'Difficult':
+			buttonColors.push('orange', 'purple');	
+			$('#difficult-level').css('display', 'flex');		
+			break;		
 		default:
 			break;
 	}
 })
+}
+setUpEventListenersForStartGame();
 
 function buttonPressed(btnColor){
     $('#' + btnColor).addClass('pressed');
