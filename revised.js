@@ -200,6 +200,17 @@ $('.btn').click(function(){
 	reconcileGameAndUserPattern();
 })
 
+function removeAdditionalButtonColors(){
+	//let orange = buttonColors.includes('orange');
+	let orangeIndex = buttonColors.indexOf('orange');
+	let purpleIndex = buttonColors.indexOf('purple');
+	//let purple = buttonColors.includes('purple');
+	if(buttonColors.includes('orange') && buttonColors.includes('purple')){
+		buttonColors.splice(orangeIndex);
+		buttonColors.splice(purpleIndex);
+	}
+}
+
 function setUpEventListenersForStartGame(){
 
 $('body').keypress(function(e){
@@ -215,7 +226,11 @@ $('body').keypress(function(e){
 	switch (selectDifficultyLevel) {
 		case 'Easy':
 			$('.pixel-heart').css('display', 'none');
+			removeAdditionalButtonColors();
 			break;
+		case 'Normal':
+			removeAdditionalButtonColors();
+			break;	
 		case 'Difficult':
 			buttonColors.push('orange', 'purple');	
 			$('#difficult-level').css('display', 'flex');		
@@ -237,7 +252,11 @@ $('#enter').click(function(){
 	switch (selectDifficultyLevel) {
 		case 'Easy':
 			$('.pixel-heart').css('display', 'none');
+			removeAdditionalButtonColors();
 			break;
+		case 'Normal':
+			removeAdditionalButtonColors();
+			break;	
 		case 'Difficult':
 			buttonColors.push('orange', 'purple');	
 			$('#difficult-level').css('display', 'flex');		
