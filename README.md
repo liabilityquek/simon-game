@@ -28,6 +28,16 @@ The game is deployed on GitHub pages, and you can play the game <a href="https:/
 <li>A Enter button to start the game</li>
 <li>A Restart button to go back to the game main page to re-play the game.</li>
 <br>
+ <p align="center">
+  <a href="" rel="noopener">
+ <img width=800px height=600px src="/images/Simon-Game-difficult.png" alt="Simon-Game-difficult"></a>
+</p>
+<br>
+ <p align="center">
+  <a href="" rel="noopener">
+ <img width=800px height=600px src="/images/Simon-Game-gameplay-normal.png" alt="Simon-Game-normal-gameplay"></a>
+</p>
+<br>
 
 ## Technologies & Tools Used
 <li>HTML</li>
@@ -172,7 +182,8 @@ numberOfLives = difficulty.numberOfLives;
 ```
 <li>Learning callbacks in class and applying it in practise</li>
 <br>
-The difficultyLevel function is the callback function that is called by getDifficuiltyLevel to compute the values for the maximum level and number of lives.<br> Which is later executed in response to a specific event such as the player clicking on a dropdown menu.
+<p>The difficultyLevel function is the callback function that is called by getDifficuiltyLevel to compute the values for the maximum level and number of lives.</p> 
+<p>Which is later executed in response to a specific event such as the player clicking on a dropdown menu.</p>
 
 ```
 function difficultyLevel(selectDifficultyLevel){
@@ -248,8 +259,16 @@ function getGameLevel(gameLevel){
 	return gameLevel;
 }
 ```
-<br>
 
+## Future Enhancements
+<p>As this game is part of a project submission, there would not be an future amendments made to this.</p>However, if there were any future enhancements to be made, these would be the following changes:</p>
+<li>Rewrite the code using the MVC approach</li>
+<li>Insert a countdown timer for the Normal levels and above</li>
+<li>Introduce different sounds/genre for the player to choose from</li>
+<li>Allowing the game to be paused half-way which also reduce player's live</li>
+<li>Include a mixtype to hype up the music</li>
+
+<br>
 ## References
 Various sources which I have seek guidance from:
 </li>
@@ -258,6 +277,8 @@ Various sources which I have seek guidance from:
 <li><a href=https://codepen.io/BenLBlood/pen/LGLEoJ>Simon Game</a>
 </li>
 <li><a href=https://www.javascripttutorial.net/javascript-return-multiple-values>Returning Multiple Values from a Function</a>
+</li>
+<li><a href=https://www.geeksforgeeks.org/jquery-not-method-with-examples>How to use not method in jQuery</a>
 </li>
 
 <br>
