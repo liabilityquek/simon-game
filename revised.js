@@ -58,6 +58,7 @@ function getDifficuiltyLevel(difficultyLevel) {
 getDifficuiltyLevel(difficultyLevel);
 
 function generateColorCombination(getGameLevel){
+	console.log(`buttonColors: ${buttonColors}`);
     userClickPattern = [];
     $('#level-title').text(`Level ${gameLevel}/Level ${maxLevel}`);
     $('.container').css('pointer-events', 'auto');
@@ -140,7 +141,6 @@ function gameOver(){
 		$('body').removeClass('game-over')
 	}, 500);
 	$('.heart').css('opacity', '0.3');
-	$('.container').css('pointer-events', 'none');
 	restartGame();
 }
 
@@ -156,22 +156,23 @@ function restartGameToEasyModeApperance(){
 		'cursor': 'pointer',
 		'opacity': '1'
 	});
+	$('.container').css('pointer-events', 'auto');
 	$('.dropdown-content a').removeClass('pressed');
 }
 
 function restartGame(){
+	$('.container').css('pointer-events', 'none');
     gameLevel = 0;
     gameStarted = false;
     gamePattern = [];
     $('.pixel-btn').css('display', 'inline-block');
     $('.pixel-btn').click(function(){
 		$('.pixel-btn').toggleClass('active');
-		$('.container').css('pointer-events', 'none');
 		restartGameToEasyModeApperance();		
 		setUpEventListenersForStartGame();
 		//location.reload();
 	});
-	$('.container').css('pointer-events', 'auto');
+	
 }
 
 $('.btn').click(function(){
