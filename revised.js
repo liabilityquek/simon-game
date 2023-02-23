@@ -245,7 +245,7 @@ $('#enter').click(function(){
 		default:
 			break;
 	}
-})
+});
 }
 setUpEventListenersForStartGame();
 
