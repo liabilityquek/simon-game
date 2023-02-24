@@ -15,21 +15,21 @@ if(!gameStarted){
 function difficultyLevel(selectDifficultyLevel){
 	switch (selectDifficultyLevel) {
 		case 'Easy':
-			maxLevel = 20;
-			numberOfLives = 0;  
-			break;
+		maxLevel = 20;
+		numberOfLives = 0;  
+		break;
 		case 'Normal':
-			maxLevel = 25;
-			numberOfLives = 2;			
-			break;
-
+		maxLevel = 25;
+		numberOfLives = 2;			
+		break;
+		
 		case 'Difficult':
-			maxLevel = 30;
-			numberOfLives = 2;
-			break;
+		maxLevel = 30;
+		numberOfLives = 2;
+		break;
 		default:
-			$('#enter').css('cursor', 'none');  
-			break;
+		$('#enter').css('cursor', 'none');  
+		break;
 	}
 	return{maxLevel, numberOfLives} ;
 }
@@ -111,23 +111,23 @@ function reconcileGameAndUserPattern() {
 		setTimeout(() => {
             $('body').removeClass('game-over');
 		}, 500);
-
+		
 		setTimeout(() => {
             generateColorCombination(getGameLevel);
 		}, 1500);
 		reduceLives(numberOfLives);
 		numberOfLives--;		
 		
-	}else if (userClickPattern[lastColor] !== gamePattern[lastColor] && numberOfLives === 0) { //comparing values in an array
+		}else if (userClickPattern[lastColor] !== gamePattern[lastColor] && numberOfLives === 0) { //comparing values in an array
 		// console.log('wrong');
 		// console.log("userClickPattern[lastIndex]", userClickPattern[lastColor]);
 		// console.log("gamePattern[lastIndex]", gamePattern[lastColor]);
 		playOtherSounds('wrong');
 		gameOver();
 		//return;
-	}else if (userClickPattern.length === gamePattern.length) {
+		}else if (userClickPattern.length === gamePattern.length) {
 		// console.log('Success');
-		 	gameLevel++;
+		gameLevel++;
 		setTimeout(() => {
             generateColorCombination(getGameLevel);
 		}, 1000);
@@ -213,59 +213,59 @@ function removeAdditionalButtonColors(){
 }
 
 function setUpEventListenersForStartGame(){
-
-$('body').keypress(function(e){
-	console.log(e.key);
-	if(e.key === 'Enter' && !gameStarted && selectDifficultyLevel){
-		gameStarted = true;
-		gameLevel++;
-		maskDifficultyLevel();
-		setTimeout(() => {
-			generateColorCombination(getGameLevel);
-		}, 1000);     
-	}
-	switch (selectDifficultyLevel) {
-		case 'Easy':
+	
+	$('body').keypress(function(e){
+		console.log(e.key);
+		if(e.key === 'Enter' && !gameStarted && selectDifficultyLevel){
+			gameStarted = true;
+			gameLevel++;
+			maskDifficultyLevel();
+			setTimeout(() => {
+				generateColorCombination(getGameLevel);
+			}, 1000);     
+		}
+		switch (selectDifficultyLevel) {
+			case 'Easy':
 			$('.pixel-heart').css('display', 'none');
 			removeAdditionalButtonColors();
 			break;
-		case 'Normal':
+			case 'Normal':
 			removeAdditionalButtonColors();
 			break;	
-		case 'Difficult':
+			case 'Difficult':
 			buttonColors.push('orange', 'purple');	
 			$('#difficult-level').css('display', 'flex');		
 			break;	
-		default:
+			default:
 			break;
-	}
-});
-
-$('#enter').click(function(){
-	if(!gameStarted && selectDifficultyLevel){
-		gameStarted = true;
-		gameLevel++;
-		maskDifficultyLevel();
-		setTimeout(() => {
-			generateColorCombination(getGameLevel);
-		}, 1000);             
-	}
-	switch (selectDifficultyLevel) {
-		case 'Easy':
+		}
+	});
+	
+	$('#enter').click(function(){
+		if(!gameStarted && selectDifficultyLevel){
+			gameStarted = true;
+			gameLevel++;
+			maskDifficultyLevel();
+			setTimeout(() => {
+				generateColorCombination(getGameLevel);
+			}, 1000);             
+		}
+		switch (selectDifficultyLevel) {
+			case 'Easy':
 			$('.pixel-heart').css('display', 'none');
 			removeAdditionalButtonColors();
 			break;
-		case 'Normal':
+			case 'Normal':
 			removeAdditionalButtonColors();
 			break;	
-		case 'Difficult':
+			case 'Difficult':
 			buttonColors.push('orange', 'purple');	
 			$('#difficult-level').css('display', 'flex');		
 			break;		
-		default:
+			default:
 			break;
-	}
-});
+		}
+	});
 }
 setUpEventListenersForStartGame();
 

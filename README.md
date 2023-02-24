@@ -185,7 +185,7 @@ numberOfLives = difficulty.numberOfLives;
 <p>The difficultyLevel function is the callback function that is called by getDifficuiltyLevel to compute the values for the maximum level and number of lives.</p> 
 <p>Which is later executed in response to a specific event such as the player clicking on a dropdown menu.</p>
 
-```
+```js
 function difficultyLevel(selectDifficultyLevel){
 	switch (selectDifficultyLevel) {
 		case 'Easy':
@@ -227,7 +227,7 @@ getDifficuiltyLevel(difficultyLevel);
 
 getGameLevel function is used to extract the gameLevel from the generateColorCombination which will then be used to return the value of the gameLevel.
 
-```
+```js
 
 function generateColorCombination(getGameLevel){
     userClickPattern = [];
