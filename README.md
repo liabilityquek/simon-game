@@ -147,7 +147,7 @@ These are key takeaways when working on the project:
 <li>Create functions in order to reduce duplication codes</li>
 <li>Returning multiple values from an function using an object like the one shown below</li>
 
-```
+```js
 function difficultyLevel(selectDifficultyLevel){
 
 	switch (selectDifficultyLevel) {
