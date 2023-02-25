@@ -44,8 +44,21 @@ The game is deployed on GitHub pages, and you can play the game <a href="https:/
 <li>jQuery</li>
 <li>CSS</li>
 <li>Git commands</li>
+<li>Jest for unit testing</li>
 <br>
 
+## Configuring and Installing Jest 
+```
+npm install --save-dev jest jquery jest-environment-jsdom
+npm install --save-dev jsdom
+```
+```.json
+{
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "jsdom"
+  }
+```
 ## How To Play
 <ol>
 <li>Hover to Game Mode and select difficulty level</li>
@@ -279,6 +292,16 @@ Various sources which I have seek guidance from:
 <li><a href=https://www.javascripttutorial.net/javascript-return-multiple-values>Returning Multiple Values from a Function</a>
 </li>
 <li><a href=https://www.geeksforgeeks.org/jquery-not-method-with-examples>How to use not method in jQuery</a>
+</li>
+<li><a href=https://archive.jestjs.io/docs/en/24.x/configuration>Configuring Jest</a>
+</li>
+<li><a href=https://stackoverflow.com/questions/44970683/how-to-test-if-function-was-called-with-defined-parameters-tohavebeencalledwit>How to test if function was called with defined parameters ( toHaveBeenCalledWith ) with Jest</a>
+</li>
+<li><a href=https://stackoverflow.com/questions/40992628/what-does-jest-fn-do-and-how-can-i-use-it>What does jest.fn() do and how can I use it?</a>
+</li>
+<li><a href=https://stackoverflow.com/questions/49096093/how-do-i-test-a-jest-console-log>How do I test a jest console.log</a>
+</li>
+<li><a href=https://stackoverflow.com/questions/33638385/simulate-keydown-on-document-for-jest-unit-testing>Simulate keydown on document for JEST unit testing</a>
 </li>
 
 <br>
