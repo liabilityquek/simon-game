@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img width=800px height=600px src="/images/Simon-Game.png" alt="Simon Game"></a>
+ <img style="max-width: 100%;" src="/images/Simon-Game.png" alt="Simon Game"></a>
 </p>
 
 <h3 align="center">Simon Game</h3>
@@ -30,12 +30,12 @@ The game is deployed on GitHub pages, and you can play the game <a href="https:/
 <br>
  <p align="center">
   <a href="" rel="noopener">
- <img width=800px height=600px src="/images/Simon-Game-difficult.png" alt="Simon-Game-difficult"></a>
+ <img style="max-width: 100%;" src="/images/Simon-Game-difficult.png" alt="Simon-Game-difficult"></a>
 </p>
 <br>
  <p align="center">
   <a href="" rel="noopener">
- <img width=800px height=600px src="/images/Simon-Game-gameplay-normal.png" alt="Simon-Game-normal-gameplay"></a>
+ <img style="max-width: 100%;" src="/images/Simon-Game-gameplay-normal.png" alt="Simon-Game-normal-gameplay"></a>
 </p>
 <br>
 
